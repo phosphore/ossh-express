@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OSSH</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Open Source Security Hub. Where open source meets infosec.">
+    <meta name="author" content="Lorenzo Stella">
+    <link rel="icon" href="/favicon.ico">
+    <!-- Bootstrap Core CSS-->
+    <link rel="stylesheet" href="/res/css/bootstrap.min.css">
+    <!-- Fonts-->
+    <link href="/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/res/css/animate.min.css">
+    <link href="res/css/grayscale.css" rel="stylesheet">
+    <link href="res/css/magnific-popup.css" rel="stylesheet">
+    <link href="res/css/login.css" rel="stylesheet">
+    <link href="res/css/snackbar.min.css" rel="stylesheet">
+    <link href="res/css/material.css" rel="stylesheet">
+  </head>
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Navigation-->
+    <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target=".navbar-main-collapse" class="navbar-toggle"><i class="fa fa-bars"></i></button><a href="#page-top" class="navbar-brand page-scroll"><img style="display:inline;" src="/res/img/icon.png"> OSS <span class="light">Hub</span></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling-->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav">
+            <!-- Hidden li included to remove active class from about link when scrolled up past about section-->
+            <li class="hidden"><a href="#page-top"></a></li>
+            <li><a href="#about" class="page-scroll">About</a></li>
+            <li><a href="javascript:join();" class="page-scroll">Join Now</a></li>
+            <li><a href="#small-dialog" class="page-scroll popup-with-move-anim">Login</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse-->
+      </div>
+      <!-- /.container-->
+    </nav>
+    <!-- Intro Header-->
+    <header class="intro">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row canvashead">
+            <div class="col-md-8 col-md-offset-2">
+              <h1 class="brand-heading">OSSH</h1>
+              <p class="intro-text">Open Source Security Hub <br>Where open source meets infosec.<br>
+                <ul class="list-inline banner-social-buttons join-btns-container">
+                  <li><a href="join/project" class="btn btn-default btn-lg join-btns"><i class="fa fa-github fa-fw"></i><span class="network-name">I'm a <br class="visible-xs">Project Manager</span></a></li>
+                  <li><a href="join/researcher" class="btn btn-default btn-lg join-btns"><i class="fa fa-terminal fa-fw"></i><span class="network-name">I'm a <br class="visible-xs">Security Researcher</span></a></li>
+                </ul>
+              </p><a href="#about" class="btn btn-circle page-scroll"><i class="fa fa-angle-double-down animated"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- login form-->
+        <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+          <h1>Login</h1>
+          <div id="login"></div>
+        </div>
+      </div>
+    </header>
+    <!-- About Section-->
+    <section id="about" class="container content-section text-center">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h2 class="wow fadeInDown">About</h2>
+          <p class="wow fadeInUp"><a title="Open Source Security Hub">OSSH</a> is a platform to help keeping in touch open source projects with information security specialists.</p>
+          <p class="wow fadeInUp">You can start by <a href="join/researcher" title="Adopt a project">adopting a project</a> or <a href="join/project" title="Request an infosec expert">requesting a collaboration</a>.</p>
+        </div>
+      </div>
+    </section>
+    <section id="download" class="content-section text-center">
+      <div class="download-section">
+        <div class="container">
+          <div class="col-lg-8 col-lg-offset-2">
+            <h2 class="wow fadeInDown">Projects on OSSH</h2>
+            <p class="wow fadeIn">Many OS projects are using OSSH to find a security specialist</p>
+            <ul class="list-inline banner-social-buttons">
+              <li class="wow fadeIn"><a href="#" class="btn btn-default btn-lg">One</a></li>
+              <li data-wow-delay="0.1s" class="wow fadeIn"><a href="#" class="btn btn-default btn-lg">Two</a></li>
+              <li data-wow-delay="0.2s" class="wow fadeIn"><a href="#" class="btn btn-default btn-lg">Three</a></li>
+              <li data-wow-delay="0.3s" class="wow fadeIn"><a href="#" class="btn btn-default btn-lg">Four</a></li>
+              <li data-wow-delay="0.4s" class="wow fadeIn"><a href="#" class="btn btn-default btn-lg">Five</a></li>
+            </ul><br>
+            <!-- <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>-->
+          </div>
+        </div>
+      </div>
+    </section><a href="#" class="scrollup">Scroll</a>
+    <!-- Footer-->
+    <footer>
+      <div class="container text-center">
+        <p>OSSH was created by the <a target="_blank" href="https://www.owasp.org/index.php/Italy" title="OWASP Italy">Italian OWASP Chapter</a>, 2015.</p>
+      </div>
+    </footer>
+    <script type="text/template" id="tmpl-login">
+      <form class="form-signin">
+        <label for="inputEmail" class="sr-only">Email address/Username</label>
+        <input id="inputEmail" name="username" value="<%= username %>" type="email" placeholder="<%- errfor.username ? errfor.username : "Email address" %>" required="" autofocus="" class="form-control">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input id="inputPassword" name="password" value="<%= password %>" type="password" placeholder="<%- errfor.password ? errfor.password : "Password" %>" required="" class="form-control">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+          <label style="float: right;"><a href="/login/forgot/">Need help?</a></label>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block loginbtn"><i class="fa fa-arrow-right"></i> Sign in</button>
+      </form>
+    </script>
+    <!-- jQuery-->
+    <script src="res/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript-->
+    <script src="res/js/bootstrap.min.js"></script>
+    <!-- Custom Theme JavaScript-->
+    <script src="res/js/grayscale.js"></script>
+    <!-- Canvas Bg-->
+    <script src="res/js/pixi.js" type="text/javascript" charset="utf-8"></script>
+    <script src="res/js/quicksketch.js" type="text/javascript" charset="utf-8"></script>
+    <script src="res/js/introBG.js" type="text/javascript" charset="utf-8"></script>
+    <script src="res/js/wow.min.js"></script>
+    <script src="res/js/index.js"></script>
+    <script src="/layouts/core.min.js"></script>
+    <script src="/views/login/index.js"></script>
+    <script src="res/js/jquery.magnific-popup.min.js"></script>
+    <!-- Plugin JavaScript-->
+    <script src="res/js/jquery.easing.min.js"></script>
+    <script src="res/js/snackbar.min.js"></script>
+  </body>
+</html>

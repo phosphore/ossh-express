@@ -1,0 +1,136 @@
+extends ../../../layouts/default
+
+block head
+  title Join OSSH
+
+block neck
+    link(href='/res/css/nprogress.css', rel='stylesheet')
+    link(href='/res/css/simple-sidebar.css', rel='stylesheet')
+    link(href='/res/css/grayscale.css', rel='stylesheet')
+    link(href='/res/css/bootstrap-tags.css', rel='stylesheet')
+    link(href='/res/css/success.css', rel='stylesheet')
+    link(href='/res/css/snackbar.min.css', rel='stylesheet')
+    link(href='/res/css/material.css', rel='stylesheet')
+
+block body
+  body
+    #wrapper
+      // Sidebar
+      #sidebar-wrapper
+        ul.sidebar-nav
+          li#logo.sidebar-brand
+            a.navbar-brand.page-scroll(href='../')
+              img(style='display:inline;', src='/res/img/icon.png')
+              |  OSS 
+              span.light Hub
+          li
+            a#navfirst.navhover
+              i.fa.fa-male
+              |    Who am I?
+          li
+            a#navsecond
+              i.fa.fa-code
+              |    Add a project
+          li
+            a#navthird
+              i.fa.fa-users
+              |    Start collaborating!
+      // /#sidebar-wrapper
+      // Page Content
+      #page-content-wrapper
+        .container-fluid
+          .row
+            .col-lg-12
+              h1 Join now
+              p#headingtext To get started, simply tell us a bit about yourself.
+              form(role='form')
+                #stepone
+                  .row
+                    .col-xs-12.col-sm-6.col-md-6
+                      .form-group
+                        input#first_name.form-control.input-lg(type='text', name='first_name', placeholder='First Name', tabindex='1', autofocus='', pattern='^[^0-9]+$')
+                    .col-xs-12.col-sm-6.col-md-6
+                      .form-group
+                        input#last_name.form-control.input-lg(type='text', name='last_name', placeholder='Last Name', tabindex='2', pattern='^[^0-9]+$')
+                    .note
+                      small You are not required to provide your name, if you don't want.
+                    br
+                  .form-group
+                    input#display_name.form-control.input-lg(type='text', name='display_name', placeholder='Display Name', tabindex='3')
+                  .form-group
+                    input#email.form-control.input-lg(type='email', name='email', placeholder='Email Address', tabindex='4')
+                  .row
+                    .col-xs-12.col-sm-6.col-md-6
+                      .form-group
+                        input#password.form-control.input-lg(type='password', name='password', placeholder='Password', tabindex='5')
+                    .col-xs-12.col-sm-6.col-md-6
+                      .form-group
+                        input#password_confirmation.form-control.input-lg(type='password', name='password_confirmation', placeholder='Confirm Password', tabindex='6')
+                  .row
+                    .col-xs-8.col-sm-9.col-md-9
+                      | By clicking 
+                      i.fa.fa-chevron-right(style='color: #219ab3;')
+                      | , you agree to the 
+                      a(href='#', data-toggle='modal', data-target='#t_and_c_m') Terms and Conditions
+                      |  set out by this site, including our Cookie Use.
+                  br
+                  .row
+                    .col-xs-12.col-md-6
+                    .col-xs-12.col-md-6
+                      a#btn-steptwo.btn.btn-default.nextstep(href='#steptwo', tabindex='7')
+                        i.fa.fa-chevron-right
+                #steptwo.hide
+                  .row
+                    .col-xs-12.col-sm-12.col-md-12
+                      .form-group
+                        input#github.form-control.input-lg(type='text', name='github', placeholder='Paste here your project url (Github, Bitbucket)', tabindex='8')
+                      .note(style='float:right;')
+                        small I try to guess a few things from this.
+                  br
+                  span Summary
+                  .row
+                    .col-xs-12.col-sm-6.col-md-6
+                      .form-group
+                        input#projectname.form-control.input-lg(type='text', name='projectname', placeholder='Project Name', tabindex='9')
+                        input#ownerAvatarUrl.form-control.input-lg(type='hidden', name='ownerAvatarUrl')
+                    .col-xs-12.col-sm-6.col-md-6
+                      .form-group
+                        #languages
+                  .form-group
+                    span Description
+                    textarea#projectdescription.form-control.input-lg(name='projectdescription', rows='1', placeholder='Describe your project...', tabindex='10')
+                  br
+                  .row
+                    .col-xs-12.col-md-6
+                    .col-xs-12.col-md-6
+                      a#btn-stepthree.btn.btn-default.nextstep(href='#stepthree', tabindex='12')
+                        i.fa.fa-chevron-right
+                #stepthree.hide
+                  .row.stepscomplete
+                    .sweet-alert
+                      .icon.success
+                        span.line.tip
+                        span.line.long
+                        .placeholder
+                        .fix
+                    br
+                    | Now you just need to check your inbox to confirm your email!
+                    br
+                    a(href='/') Go back
+              // <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+              // <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+      // /#page-content-wrapper
+    // /#wrapper
+    // jQuery
+    script(src='/res/js/jquery.js')
+    // Bootstrap/Plugins Core JavaScript
+    script(src='/res/js/nprogress.js')
+    script(src='/res/js/bootstrap.min.js')
+    script(src='/res/js/jquery-ui.min.js')
+    script(src='/res/js/bootstrap-tags.min.js')
+    script(src='/res/js/snackbar.min.js')
+    script(src='/vendor/jquery.cookie/jquery.cookie.js')
+    // Main Script
+    script(src='/res/js/registration-project.js?#{cacheBreaker}')
+    script.
+      console.info("(⌐■_■)");

@@ -1,0 +1,261 @@
+extends ../../layouts/default
+
+block head
+  title OSSH: #{req.name} new bug report
+
+block neck
+  link(href='/res/css/grayscale.css', rel='stylesheet')
+  link(href='/res/css/magnific-popup.css', rel='stylesheet')
+  link(href='/res/css/login.css', rel='stylesheet')
+  link(href='/res/css/snackbar.min.css', rel='stylesheet')
+  link(href='/res/css/material.css', rel='stylesheet')
+  link(href='/res/css/project.css', rel='stylesheet')
+  link(href='/res/css/submission.css', rel='stylesheet')
+  script(src='/res/js/marked.js')
+
+block body
+  body#page-top(data-spy='scroll', data-target='.navbar-fixed-top')
+    // Navigation
+    nav.navbar.navbar-custom.navbar-fixed-top(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button')
+            i.fa.fa-bars
+          a.navbar-brand.page-scroll(href='/')
+            img(style='display:inline;', src='/res/img/icon.png')
+            |  OSS 
+            span.light Hub
+        // Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse.navbar-right.navbar-main-collapse
+          ul.nav.navbar-nav
+            // Hidden li included to remove active class from about link when scrolled up past about section
+            li.hidden
+              a(href='#page-top')
+            if username
+                li
+                  a(href='/') Explore Projects
+                li
+                  a Submissions
+                li.usercaret
+                  a
+                    img(src='/avatar/#{userid}')
+                    | Hello #{username}! 
+                    span.caret
+                      ul.sub-menu.collapse
+                        li
+                          a(href='/profile') Profile
+                        li
+                          a(href='/logout') Logout
+            else
+                li
+                  a.page-scroll(href='#about') About
+                li
+                  a.page-scroll(href='javascript:join();') Join Now
+                li
+                  a.page-scroll.popup-with-move-anim(href='#small-dialog') Login
+
+        // /.navbar-collapse
+      // /.container
+    // Intro Header
+    header.intro
+      .intro-body
+        .container
+          .col-md-12
+           .row.canvashead
+             .container
+               .row.header
+                 .project-header.col-xs-12
+                   .row
+                     .project-image.col-xs-3.col-md-1
+                       img(src='/avatar/#{user.createdId}?#{cacheBreaker}')
+                     .project-titleright.col-xs-11.text-left
+                       h3 New bug report for
+                       h1 !{req.name}
+                         small  by !{req.owner}
+
+               .row.content.text-left
+                 .project-info.col-md-8
+                   h3 Report
+                   row
+                    .help-text.col-sm-3
+                      label(for='report-title') 1. Info
+                      br
+                      span Think of a title for the finding
+                    .form.col-sm-9
+                      form
+                       .form-group
+                         input#report-title.form-control(type='text', autocomplete='off', autofocus, placeholder='A short description of your submission')
+                   row
+                    .help-text.col-sm-3
+                    .form.col-sm-9
+                      form
+                       .form-group
+                           select#report-type.form-control
+                             option Select bug type...
+                             option(value='other') Bug/Other
+                             option(value='Allowing Domains or Accounts to Expire') Allowing Domains or Accounts to Expire
+                             option(value='Buffer Overflow') Buffer Overflow
+                             option(value='Business logic vulnerability') Business logic vulnerability
+                             option(value='Catch NullPointerException') Catch NullPointerException
+                             option(value='Covert storage channel') Covert storage channel
+                             option(value='CRLF Injection') CRLF Injection
+                             option(value='Cross Site Scripting Flaw') Cross Site Scripting Flaw
+                             option(value='Deserialization of untrusted data') Deserialization of untrusted data
+                             option(value='Directory Restriction Error') Directory Restriction Error
+                             option(value='Double Free') Double Free
+                             option(value='Doubly freeing memory') Doubly freeing memory
+                             option(value='Empty Catch Block') Empty Catch Block
+                             option(value='Empty String Password') Empty String Password
+                             option(value='Expression Language Injection') Expression Language Injection
+                             option(value='Full Trust CLR Verification issue: Exploiting Passing Reference Types by Reference') Full Trust CLR Verification issue: Exploiting Passing Reference Types by Reference
+                             option(value='Heartbleed Bug') Heartbleed Bug
+                             option(value='Improper Data Validation') Improper Data Validation
+                             option(value='Improper pointer subtraction') Improper pointer subtraction
+                             option(value='Insecure Compiler Optimization') Insecure Compiler Optimization
+                             option(value='Insecure Randomness') Insecure Randomness
+                             option(value='Insecure Temporary File') Insecure Temporary File
+                             option(value='Insecure Third Party Domain Access') Insecure Third Party Domain Access
+                             option(value='Insecure Transport') Insecure Transport
+                             option(value='Insufficient Entropy') Insufficient Entropy
+                             option(value='Insufficient Session-ID Length') Insufficient Session-ID Length
+                             option(value='Least Privilege Violation') Least Privilege Violation
+                             option(value='Leftover Debug Code') Leftover Debug Code
+                             option(value='Memory leak') Memory leak
+                             option(value='Missing Error Handling') Missing Error Handling
+                             option(value='Missing XML Validation') Missing XML Validation
+                             option(value='Multiple admin levels') Multiple admin levels
+                             option(value='Null Dereference') Null Dereference
+                             option(value='Overly Permissive Regular Expression') Overly Permissive Regular Expression
+                             option(value='OWASP .NET Vulnerability Research') OWASP .NET Vulnerability Research
+                             option(value='Password Management: Hardcoded Password') Password Management: Hardcoded Password
+                             option(value='Password Plaintext Storage') Password Plaintext Storage
+                             option(value='PHP File Inclusion') PHP File Inclusion
+                             option(value='PHP Object Injection') PHP Object Injection
+                             option(value='Poor Logging Practice') Poor Logging Practice
+                             option(value='Portability Flaw') Portability Flaw
+                             option(value='Privacy Violation') Privacy Violation
+                             option(value='PRNG Seed Error') PRNG Seed Error
+                             option(value='Process Control') Process Control
+                             option(value='Return Inside Finally Block') Return Inside Finally Block
+                             option(value='Session Variable Overloading') Session Variable Overloading
+                             option(value='String Termination Error') String Termination Error
+                             option(value='Unchecked Error Condition') Unchecked Error Condition
+                             option(value='Unchecked Return Value: Missing Check against Null') Unchecked Return Value: Missing Check against Null
+                             option(value='Undefined Behavior') Undefined Behavior
+                             option(value='Unreleased Resource') Unreleased Resource
+                             option(value='Unrestricted File Upload') Unrestricted File Upload
+                             option(value='Unsafe function call from a signal handler') Unsafe function call from a signal handler
+                             option(value='Unsafe JNI') Unsafe JNI
+                             option(value='Unsafe Mobile Code') Unsafe Mobile Code
+                             option(value='Unsafe use of Reflection') Unsafe use of Reflection
+                             option(value='Use of hard-coded password') Use of hard-coded password
+                             option(value='Use of Obsolete Methods') Use of Obsolete Methods
+                             option(value='Using a broken or risky cryptographic algorithm') Using a broken or risky cryptographic algorithm
+                             option(value='Using freed memory') Using freed memory
+                             option(value='Template:Vulnerability') Template:Vulnerability
+                             option(value='Vulnerability template') Vulnerability template
+                             option(value='XML External Entity (XXE) Processing') XML External Entity (XXE) Processing
+                   row
+                    .help-text.col-sm-3
+                      label(for='report-description') 2. Bug details
+                      br
+                      span Describe the bug, and provide a PoC.
+                        br
+                        | How would you fix it?
+                    .form.col-sm-9
+                      form
+                       .form-group
+                         textarea#report-description.form-control(rows='4', autocomplete='off', placeholder='A description of the vulnerability (a paragraph or two)')
+                   row
+                    .help-text.col-sm-3
+                      label(for='report-steps') 2.1 Steps to replicate
+                    .form.col-sm-9
+                      form
+                       .form-group
+                         textarea#report-steps.form-control(rows='4', autocomplete='off', placeholder='A brief description of the possible exploitation steps, if needed')
+                   row
+                    .help-text.col-sm-3
+                      label(for='report-affectedfiles') 2.2 Affected files
+                    .form.col-sm-9
+                      form
+                       .form-group
+                         input#report-affectedfiles.form-control(type='text', autocomplete='off', placeholder='Git link to the file where this vulnerability lies')
+                   row
+                    .help-text.col-sm-3
+                      label(for='report-send') 3. Send report
+                      br
+                      span Confirm your bug is within the specified targets then send it through.
+                    .form.col-sm-9
+                      form
+                       .form-group
+                        label.form-check-label
+                          input.form-check-input(type='checkbox')
+                          |  I have followed the 
+                          a(href='#') bounty brief 
+                          | and agree to the 
+                          a(href='#') terms & conditions
+                          | .
+                         a.btn.btn-default.btn-md.sendsubmissions(href="#" id='sendsubmissions' data-href='/submission/#{req.owner}/#{req.name}/new' data-redirect='/project/#{req.owner}/#{req.name}') Send report
+
+
+                 .project-members.col-md-3
+                   h3 Rules
+                   span Please respect OSSH's 
+                     a(href='#') standard disclosure terms.
+                   br
+                   br
+                   h3 Tips
+                   ul
+                     li Include a working PoC.
+                     li If possible, explain how your finding is exploitable and if you have ideas about how to mitigate the bug.
+                     li Report the tools you used to find the bug
+                    
+
+               .row
+        // login form
+        #small-dialog.zoom-anim-dialog.mfp-hide
+          h1 Login
+          div#login
+    a.scrollup(href='#') Scroll
+    // Footer
+    footer
+      .container.text-center
+        p
+          | OSSH was created by the 
+          a(target='_blank', href='https://www.owasp.org/index.php/Italy', title='OWASP Italy') Italian OWASP Chapter
+          | , 2016.
+
+    script(type='text/template', id='tmpl-login')
+      form.form-signin
+        label.sr-only(for='inputEmail') Email address/Username
+        input#inputEmail.form-control(name='username', value!='<%= username %>', type='email', placeholder!='<%- errfor.username ? errfor.username : "Email address" %>', required='', autofocus='')
+        label.sr-only(for='inputPassword') Password
+        input#inputPassword.form-control(name='password', value!='<%= password %>', type='password', placeholder!='<%- errfor.password ? errfor.password : "Password" %>', required='')
+        .checkbox
+          label
+            input(type='checkbox', value='remember-me')
+            |  Remember me
+          label(style='float: right;')
+            a(href='/login/forgot/') Need help?
+        button.btn.btn-lg.btn-primary.btn-block.loginbtn(type='submit')
+          i.fa.fa-arrow-right
+          |  Sign in
+    // jQuery
+    script(src='/res/js/jquery.js')
+    // Bootstrap Core JavaScript
+    script(src='/res/js/bootstrap.min.js')
+    // Custom Theme JavaScript
+    script(src='/res/js/grayscale.js')
+    // Canvas Bg
+    script(src='/res/js/pixi.js', type='text/javascript', charset='utf-8')
+    script(src='/res/js/quicksketch.js', type='text/javascript', charset='utf-8')
+    //script(src='/res/js/introBG.js', type='text/javascript', charset='utf-8')
+    //script(src='/res/js/wow.min.js')
+    script(src='/res/js/index.js')
+    script(src='/layouts/core.min.js')
+    script(src='/views/login/index.js')
+    script(src='/res/js/jquery.magnific-popup.min.js')
+    // Plugin JavaScript
+    script(src='/res/js/jquery.easing.min.js')
+    script(src='/res/js/snackbar.min.js')
+    script(src='/res/js/submitReport.js')

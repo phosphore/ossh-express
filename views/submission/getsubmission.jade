@@ -1,0 +1,175 @@
+extends ../../layouts/default
+
+block head
+  title OSSH: #{req.name} bug report
+
+block neck
+  link(href='/res/css/grayscale.css', rel='stylesheet')
+  link(href='/res/css/magnific-popup.css', rel='stylesheet')
+  link(href='/res/css/login.css', rel='stylesheet')
+  link(href='/res/css/snackbar.min.css', rel='stylesheet')
+  link(href='/res/css/material.css', rel='stylesheet')
+  link(href='/res/css/project.css', rel='stylesheet')
+  link(href='/res/css/submission.css', rel='stylesheet')
+  link(href='/res/css/bootstrap-markdown.min.css', rel='stylesheet')
+  script(src='/res/js/marked.js')
+
+block body
+  body#page-top(data-spy='scroll', data-target='.navbar-fixed-top')
+    // Navigation
+    nav.navbar.navbar-custom.navbar-fixed-top(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button')
+            i.fa.fa-bars
+          a.navbar-brand.page-scroll(href='/')
+            img(style='display:inline;', src='/res/img/icon.png')
+            |  OSS 
+            span.light Hub
+        // Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse.navbar-right.navbar-main-collapse
+          ul.nav.navbar-nav
+            // Hidden li included to remove active class from about link when scrolled up past about section
+            li.hidden
+              a(href='#page-top')
+            if username
+                li
+                  a(href='/') Explore Projects
+                li
+                  a Submissions
+                li.usercaret
+                  a
+                    img(src='/avatar/#{userid}')
+                    | Hello #{username}! 
+                    span.caret
+                      ul.sub-menu.collapse
+                        li
+                          a(href='/profile') Profile
+                        li
+                          a(href='/logout') Logout
+            else
+                li
+                  a.page-scroll(href='#about') About
+                li
+                  a.page-scroll(href='javascript:join();') Join Now
+                li
+                  a.page-scroll.popup-with-move-anim(href='#small-dialog') Login
+
+        // /.navbar-collapse
+      // /.container
+    // Intro Header
+    header.intro
+      .intro-body
+        .container
+          .col-md-12
+           .row.canvashead
+             .container
+               .row.header
+                 .project-header.col-xs-12
+                   .row
+                     .project-image.col-xs-3.col-md-1
+                       img(src='/avatar/#{user.createdId}?#{cacheBreaker}')
+                     .project-titleright.col-xs-11.text-left
+                       h3 Bug report for
+                       h1 !{req.name} 
+                         small  by #{submission.userCreated.name}
+
+               .row.content.text-left
+                 .project-info.col-md-8
+                   h3 Report : #{submission.title}
+                   .row.list-row
+                     .col.col-md-3.vcenter.leftc
+                       h5 Reference:
+                     .col.col-md-9.vcenter.rightc
+                       span #{submission._id}
+                   .row.list-row
+                     .col.col-md-3.vcenter.leftc
+                       h5 Bug Type:
+                     .col.col-md-9.vcenter.rightc
+                       span #{submission.details.bugtype}
+                   .row.list-row
+                     .col.col-md-3.vcenter.leftc
+                       h5 Description:
+                     .col.col-md-9.vcenter.rightc
+                       span #{submission.details.description}
+                   .row.list-row
+                     .col.col-md-3.vcenter.leftc
+                       h5 Replication Steps:
+                     .col.col-md-9.vcenter.rightc
+                       span #{submission.details.replicationsteps}
+                   .row.list-row
+                     .col.col-md-3.vcenter.leftc
+                       h5 Affected files:
+                     .col.col-md-9.vcenter.rightc
+                       span #{submission.details.affectedfiles}
+
+                   br
+                   .row
+                     .col-md-2.project-image
+                       img(src='/avatar/#{userid}')
+                     .col-md-10
+                       form
+                         .form-group
+                           textarea#report-reply.form-control(rows='6', autocomplete='off', placeholder='Write a reply to this report')
+                 .project-members.col-md-3
+                   h5 Status:
+                     a.btn.btn-default.btn-xs.manageteam-btn.pull-right.popup-with-move-anim(href='#manageMembers')
+                      i.fa.fa-list
+                      |  Manage
+                   h3 #{submission.status}
+                   br
+                   h5 Added date
+                   h3 #{submission.userCreated.time}
+                   br
+                   h5 Reported by
+                   h3 #{submission.userCreated.name}
+
+               .row
+        // login form
+        #small-dialog.zoom-anim-dialog.mfp-hide
+          h1 Login
+          div#login
+    a.scrollup(href='#') Scroll
+    // Footer
+    footer
+      .container.text-center
+        p
+          | OSSH was created by the 
+          a(target='_blank', href='https://www.owasp.org/index.php/Italy', title='OWASP Italy') Italian OWASP Chapter
+          | , 2016.
+
+    script(type='text/template', id='tmpl-login')
+      form.form-signin
+        label.sr-only(for='inputEmail') Email address/Username
+        input#inputEmail.form-control(name='username', value!='<%= username %>', type='email', placeholder!='<%- errfor.username ? errfor.username : "Email address" %>', required='', autofocus='')
+        label.sr-only(for='inputPassword') Password
+        input#inputPassword.form-control(name='password', value!='<%= password %>', type='password', placeholder!='<%- errfor.password ? errfor.password : "Password" %>', required='')
+        .checkbox
+          label
+            input(type='checkbox', value='remember-me')
+            |  Remember me
+          label(style='float: right;')
+            a(href='/login/forgot/') Need help?
+        button.btn.btn-lg.btn-primary.btn-block.loginbtn(type='submit')
+          i.fa.fa-arrow-right
+          |  Sign in
+    // jQuery
+    script(src='/res/js/jquery.js')
+    // Bootstrap Core JavaScript
+    script(src='/res/js/bootstrap.min.js')
+    // Custom Theme JavaScript
+    script(src='/res/js/grayscale.js')
+    // Canvas Bg
+    script(src='/res/js/pixi.js', type='text/javascript', charset='utf-8')
+    script(src='/res/js/quicksketch.js', type='text/javascript', charset='utf-8')
+    //script(src='/res/js/introBG.js', type='text/javascript', charset='utf-8')
+    //script(src='/res/js/wow.min.js')
+    script(src='/res/js/index.js')
+    script(src='/layouts/core.min.js')
+    script(src='/views/login/index.js')
+    script(src='/res/js/jquery.magnific-popup.min.js')
+    // Plugin JavaScript
+    script(src='/res/js/jquery.easing.min.js')
+    script(src='/res/js/snackbar.min.js')      
+    script(src='/res/js/bootstrap-markdown.js')
+    script(src='/res/js/getsubmission.js')

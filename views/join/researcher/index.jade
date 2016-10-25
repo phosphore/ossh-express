@@ -1,0 +1,159 @@
+extends ../../../layouts/default
+
+block head
+  title Join OSSH
+
+block neck
+    link(href='/res/css/nprogress.css', rel='stylesheet')
+    link(href='/res/css/simple-sidebar.css', rel='stylesheet')
+    link(href='/res/css/grayscale.css', rel='stylesheet')
+    link(href='/res/css/bootstrap-tags.css', rel='stylesheet')
+    link(href='/res/css/success.css', rel='stylesheet')
+    link(href='/res/css/snackbar.min.css', rel='stylesheet')
+    link(href='/res/css/material.css', rel='stylesheet')
+
+block body
+  body
+      #wrapper
+        // Sidebar
+        #sidebar-wrapper
+          ul.sidebar-nav
+            li#logo.sidebar-brand
+              a.navbar-brand.page-scroll(href='../')
+                img(style='display:inline;', src='/res/img/icon.png')
+                |  OSS 
+                span.light Hub
+            li
+              a#navfirst.navhover
+                i.fa.fa-male
+                |    Who am I?
+            li
+              a#navsecond
+                i.fa.fa-code
+                |    What can I do?
+            li
+              a#navthird
+                i.fa.fa-users
+                |    Start collaborating!
+        // /#sidebar-wrapper
+        // Page Content
+        #page-content-wrapper
+          .container-fluid
+            .row
+              .col-lg-12
+                h1 Join now
+                p#headingtext To get started, simply tell us a bit about yourself.
+                form(role='form')
+                  #stepone
+                    .row
+                      .col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                          input#first_name.form-control.input-lg(type='text', name='first_name', placeholder='First Name', tabindex='1', autofocus='', pattern='^[^0-9]+$')
+                      .col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                          input#last_name.form-control.input-lg(type='text', name='last_name', placeholder='Last Name', tabindex='2', pattern='^[^0-9]+$')
+                      .note
+                        small You are not required to provide your name, if you don't want.
+                      br
+                    .form-group
+                      input#display_name.form-control.input-lg(type='text', name='display_name', placeholder='Display Name', tabindex='3')
+                    .form-group
+                      input#email.form-control.input-lg(type='email', name='email', placeholder='Email Address', tabindex='4')
+                    .row
+                      .col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                          input#password.form-control.input-lg(type='password', name='password', placeholder='Password', tabindex='5')
+                      .col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                          input#password_confirmation.form-control.input-lg(type='password', name='password_confirmation', placeholder='Confirm Password', tabindex='6')
+                    .row
+                      .col-xs-8.col-sm-9.col-md-9
+                        | By clicking 
+                        i.fa.fa-chevron-right(style='color: #219ab3;')
+                        | , you agree to the 
+                        a(href='#', data-toggle='modal', data-target='#t_and_c_m') Terms and Conditions
+                        |  set out by this site, including our Cookie Use.
+                    br
+                    .row
+                      .col-xs-12.col-md-6
+                      .col-xs-12.col-md-6
+                        a#btn-steptwo.btn.btn-default.nextstep(href='#steptwo', tabindex='7')
+                          i.fa.fa-chevron-right
+                  #steptwo.hide
+                    .row
+                      #user-card.col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                          img#git-avatar(src='/res/img/unknown.png', width='130', height='130')
+                          br
+                          b#git-name
+                            i.fa.fa-refresh.fa-spin
+                          br
+                          i.fa.fa-map-marker.hide
+                            | 
+                          i#git-location
+                          br
+                          a#different-username
+                            | That's not you? Type your right profile address 
+                            i.fa.fa-angle-right
+                      .col-xs-12.col-sm-6.col-md-6
+                        br
+                        .form-group
+                          input#github.form-control.input-lg(type='text', name='github', placeholder='Github url or nick', tabindex='8')
+                          input#ownerAvatarUrl.form-control.input-lg(type='hidden', name='ownerAvatarUrl')
+                        .note(style='float:right;')
+                          small I try to guess a few things from this.
+                    br
+                    .form-group
+                      #languages
+                    .form-group
+                      span A brief description of your researcher background
+                      textarea#bio.form-control.input-lg(name='bio', rows='1', placeholder='I took part to these project, published these papers, got listed in these hall of fame...  Go nuts!', tabindex='9')
+                    .form-group
+                      span URL of Blog or Website
+                      input#website.form-control.input-lg(type='text', name='website', placeholder='Website', tabindex='10')
+                    br
+                    span Credentials
+                    .row
+                      .col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                          input#certifications.form-control.input-lg(type='text', name='certifications', placeholder='Certifications', tabindex='11')
+                      .col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                          input#ISC2.form-control.input-lg(type='text', name='ISC2', placeholder='(ISC)2 #', tabindex='12')
+                    br
+                    .row
+                      .col-xs-12.col-md-6
+                      .col-xs-12.col-md-6
+                        a#btn-stepthree.btn.btn-default.nextstep(href='#stepthree', tabindex='13')
+                          i.fa.fa-chevron-right
+                  #stepthree.hide
+                    .row.stepscomplete
+                      .sweet-alert
+                        .icon.success
+                          span.line.tip
+                          span.line.long
+                          .placeholder
+                          .fix
+                      br
+                      | Now you just need to check your inbox to confirm your email!
+                      br
+                      a(href='/') Go back
+                // <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+                // <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        // /#page-content-wrapper
+      // /#wrapper
+      // jQuery
+      script(src='/res/js/jquery.js')
+      // Bootstrap/Plugins Core JavaScript
+      script(src='/res/js/nprogress.js')
+      script(src='/res/js/bootstrap.min.js')
+      script(src='/res/js/jquery-ui.min.js')
+      script(src='/res/js/bootstrap-tags.min.js')
+      script(src='/res/js/md5.js')
+      script(src='/res/js/snackbar.min.js')
+      script(src='/vendor/jquery.cookie/jquery.cookie.js')
+      // Main Script
+      script(src='/res/js/registration-researcher.js')
+      script.
+        console.info("(⌐■_■)");
+

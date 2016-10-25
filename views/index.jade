@@ -1,0 +1,147 @@
+extends ../layouts/default
+
+block head
+  title OSSH
+
+block neck
+  link(href='res/css/grayscale.css', rel='stylesheet')
+  link(href='res/css/magnific-popup.css', rel='stylesheet')
+  link(href='res/css/login.css', rel='stylesheet')
+  link(href='res/css/snackbar.min.css', rel='stylesheet')
+  link(href='res/css/material.css', rel='stylesheet')
+
+block body
+  body#page-top(data-spy='scroll', data-target='.navbar-fixed-top')
+    // Navigation
+    nav.navbar.navbar-custom.navbar-fixed-top(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-main-collapse')
+            i.fa.fa-bars
+          a.navbar-brand.page-scroll(href='#page-top')
+            img(style='display:inline;', src='/res/img/icon.png')
+            |  OSS 
+            span.light Hub
+        // Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse.navbar-right.navbar-main-collapse
+          ul.nav.navbar-nav
+            // Hidden li included to remove active class from about link when scrolled up past about section
+            li.hidden
+              a(href='#page-top')
+            li
+              a.page-scroll(href='#about') About
+            li
+              a.page-scroll(href='javascript:join();') Join Now
+            li
+              a.page-scroll.popup-with-move-anim(href='#small-dialog') Login
+        // /.navbar-collapse
+      // /.container
+    // Intro Header
+    header.intro
+      .intro-body
+        .container
+          .row.canvashead
+            .col-md-8.col-md-offset-2
+              h1.brand-heading OSSH
+              p.intro-text
+                | Open Source Security Hub 
+                br
+                | Where open source meets infosec.
+                br
+                ul.list-inline.banner-social-buttons.join-btns-container
+                  li
+                    a.btn.btn-default.btn-lg.join-btns(href='join/project')
+                      i.fa.fa-github.fa-fw
+                      span.network-name
+                        | I'm a 
+                        br.visible-xs
+                        | Project Manager
+                  li
+                    a.btn.btn-default.btn-lg.join-btns(href='join/researcher')
+                      i.fa.fa-terminal.fa-fw
+                      span.network-name
+                        | I'm a 
+                        br.visible-xs
+                        | Security Researcher
+              a.btn.btn-circle.page-scroll(href='#about')
+                i.fa.fa-angle-double-down.animated
+        // login form
+        #small-dialog.zoom-anim-dialog.mfp-hide
+          h1 Login
+          div#login
+    // About Section
+    section#about.container.content-section.text-center
+      .row
+        .col-lg-8.col-lg-offset-2
+          h2.wow.fadeInDown About
+          p.wow.fadeInUp
+            a(title='Open Source Security Hub') OSSH
+            |  is a platform to help keeping in touch open source projects with information security specialists.
+          p.wow.fadeInUp
+            | You can start by 
+            a(href='join/researcher', title='Adopt a project') adopting a project
+            |  or 
+            a(href='join/project', title='Request an infosec expert') requesting a collaboration
+            | .
+    section#download.content-section.text-center
+      .download-section
+        .container
+          .col-lg-8.col-lg-offset-2
+            h2.wow.fadeInDown Projects on OSSH
+            p.wow.fadeIn Many OS projects are using OSSH to find a security specialist
+            ul.list-inline.banner-social-buttons
+              li.wow.fadeIn
+                a.btn.btn-default.btn-lg(href='/project/codinghorrors/discourse') discourse
+              li.wow.fadeIn(data-wow-delay='0.1s')
+                a.btn.btn-default.btn-lg(href='/project/kubernetes/kubernetes') kubernetes
+              li.wow.fadeIn(data-wow-delay='0.2s')
+                a.btn.btn-default.btn-lg(href='/project/cuckoosandbox/cuckoo') Cuckoo Sandbox
+              li.wow.fadeIn(data-wow-delay='0.3s')
+                a.btn.btn-default.btn-lg(href='/project/openssl/openssl') openssl
+              li.wow.fadeIn(data-wow-delay='0.4s')
+                a.btn.btn-default.btn-lg(href='/project/sstephenson/prototype') prototype
+            br
+            // <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+    a.scrollup(href='#') Scroll
+    // Footer
+    footer
+      .container.text-center
+        p
+          | OSSH was created by the 
+          a(target='_blank', href='https://www.owasp.org/index.php/Italy', title='OWASP Italy') Italian OWASP Chapter
+          | , 2016.
+
+    script(type='text/template', id='tmpl-login')
+      form.form-signin
+        label.sr-only(for='inputEmail') Email address/Username
+        input#inputEmail.form-control(name='username', value!='<%= username %>', type='email', placeholder!='<%- errfor.username ? errfor.username : "Email address" %>', required='', autofocus='')
+        label.sr-only(for='inputPassword') Password
+        input#inputPassword.form-control(name='password', value!='<%= password %>', type='password', placeholder!='<%- errfor.password ? errfor.password : "Password" %>', required='')
+        .checkbox
+          label
+            input(type='checkbox', value='remember-me')
+            |  Remember me
+          label(style='float: right;')
+            a(href='/login/forgot/') Need help?
+        button.btn.btn-lg.btn-primary.btn-block.loginbtn(type='submit')
+          i.fa.fa-arrow-right
+          |  Sign in
+    // jQuery
+    script(src='res/js/jquery.js')
+    // Bootstrap Core JavaScript
+    script(src='res/js/bootstrap.min.js')
+    // Custom Theme JavaScript
+    script(src='res/js/grayscale.js')
+    // Canvas Bg
+    script(src='res/js/pixi.js', type='text/javascript', charset='utf-8')
+    script(src='res/js/quicksketch.js', type='text/javascript', charset='utf-8')
+    script(src='res/js/introBG.js', type='text/javascript', charset='utf-8')
+    script(src='res/js/wow.min.js')
+    script(src='res/js/index.js')
+    script(src='/layouts/core.min.js')
+    script(src='/views/login/index.js')
+    script(src='res/js/jquery.magnific-popup.min.js')
+    
+    // Plugin JavaScript
+    script(src='res/js/jquery.easing.min.js')
+    script(src='res/js/snackbar.min.js')

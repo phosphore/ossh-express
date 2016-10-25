@@ -1,0 +1,52 @@
+.project-titleright h3 {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.project-image img {
+	width: 80px;
+    height: 80px;
+}
+
+.form-control {
+	background-color: #4D4D65;
+	color: white;
+}
+
+.sendsubmissions {
+	width: 100%;
+}
+
+.list-row {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+.list-row h5 {
+	margin-bottom: 0px;
+}
+
+.vcenter {
+	display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+
+.row.list-row {
+    margin: 0px;
+    border-top: solid 1px rgba(245, 245, 245, 0.6);
+    border-left: solid 1px rgba(245, 245, 245, 0.6);
+    padding: 3px;
+}
+
+.rightc {
+    font-size: medium;
+    word-break: break-word;
+}
+
+.project-members h5 {
+    margin-bottom: 0px;
+}
+.project-image {
+	    text-align: center;
+    margin-top: 5px;
+}
