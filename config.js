@@ -6,7 +6,7 @@ exports.mongodb = {
 };
 exports.companyName = '';
 exports.projectName = 'OSSH';
-exports.systemEmail = 'lorenzo.stl@gmail.com';
+exports.systemEmail = 'mail@mail.com';
 exports.cryptoKey = 'k3yb0ardc4t';
 exports.loginAttempts = {
   forIp: 50,
@@ -17,12 +17,12 @@ exports.requireAccountVerification = false;
 exports.smtp = {
   from: {
     name: process.env.SMTP_FROM_NAME || exports.projectName +' Website',
-    address: process.env.SMTP_FROM_ADDRESS || 'lorenzo.stl@gmail.com'
+    address: process.env.SMTP_FROM_ADDRESS || 'mail@mail.com'
   },
   credentials: {
-    user: process.env.SMTP_USERNAME || 'lorenzo.stl@gmail.com',
-    password: process.env.SMTP_PASSWORD || '@DmIn@Cc0unt',
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    user: process.env.SMTP_USERNAME || 'mail@mail.com',
+    password: process.env.SMTP_PASSWORD || '309cf1faae791ed3a839a87d019ff828dff8a5f6',
+    host: process.env.SMTP_HOST || 'smtp.mail.com',
     ssl: true
   }
 };
