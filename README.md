@@ -14,8 +14,8 @@ I presented this personal project for my "Web and Mobile Developing" class.
 ![Researcher dashboard and Project Manager dashboard](http://lorenzostella.it/on/ossh/2.png "Researcher dashboard and Project Manager dashboard")
 
 ## Technology
-Server side, Drywall is built with the [Express](http://expressjs.com/)
-framework, using [MongoDB](http://www.mongodb.org/) as a data store.
+The app is built server side with Drywall, an [Express](http://expressjs.com/)
+framework boilerplate, using [MongoDB](http://www.mongodb.org/) as a data store.
 
 The front-end is built with [Backbone](http://backbonejs.org/), using [Grunt](http://gruntjs.com/) for the asset pipeline.
 
